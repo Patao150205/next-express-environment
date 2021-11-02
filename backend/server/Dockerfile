@@ -1,2 +1,4 @@
 FROM node:16.13.0
+RUN npm i 
 WORKDIR /app
+EXPOSE 80

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    container_name: next_express_db
+    envfile: ./database/mysql.env
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database/data:/var/lib/mysql
+    networks:
+      - internal-network
+    # restart: always
+  app:
+    build: ./server
+    container_name: next_express_server
+    environment:
+      - TZ=Asia/Tokyo
+      - PORT=80
+    ports:
+      - 8000:80
+    # restart: always
+    volumes:
+      - ./server:app
+    command:
