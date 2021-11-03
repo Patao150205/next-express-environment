@@ -1,4 +1,4 @@
-import express from './server/node_modules/@types/express';
+import express from 'express';
 
 const app: express.Express = express();
 const PORT = process.env.PORT || 8000;
