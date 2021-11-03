@@ -8,4 +8,5 @@ WORKDIR /app
 
 EXPOSE 80
 
-CMD [ "node", "server.js" ]
+RUN npm install -g typescript
+CMD bash -c "npm install && tsc && npm run start"
